@@ -76,30 +76,17 @@ namespace Logic
         /// <param name="columns">Number of columns</param>
         static void PrintFinalDirection(int rows, int columns)
         {
-            // If there is only one row, you can only go right.
-            if (rows == 1)
+            // If there are less or the same rows than columns
+            if (rows <= columns)
             {
-                Console.WriteLine("R");
+                // The final direction will depend on whether the rows are even or odd.
+                Console.WriteLine(rows % 2 == 0 ? "L" : "R");
             }
-            // Else if there is only one column, you can only go down.
-            else if (columns == 1)
-            {
-                Console.WriteLine("D");
-            }
-            else // Else (there are more than 1 row and column).
-            {
-                // If there are less or the same rows than columns
-                if (rows <= columns)
-                {
-                    // The final direction will depend on whether the rows are even or odd.
-                    Console.WriteLine(rows % 2 == 0 ? "L" : "R");
-                }
 
-                else // Else (there are more rows than columns)
-                {
-                    // The final direction will depend on whether the columns are even or odd.
-                    Console.WriteLine(columns % 2 == 0 ? "U" : "D");
-                }
+            else // Else (there are more rows than columns)
+            {
+                // The final direction will depend on whether the columns are even or odd.
+                Console.WriteLine(columns % 2 == 0 ? "U" : "D");
             }
         }
     }
